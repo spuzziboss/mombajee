@@ -1,0 +1,87 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(name='description', content='Sometimes it is a fool who can tell the truth')
+		meta(name='author', content='OSIMORE')
+		title OSIMORE
+		// Fonts
+		link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700italic,800,800italic,700,600italic', rel='stylesheet')
+
+		// Vendor Styles
+		link(href='public/stylesheets/bootstrap.min.css', rel='stylesheet')
+		link(href='public/stylesheets/animate.css', rel='stylesheet')
+		
+		link(href='public/stylesheets/font-awesome.min.css', rel='stylesheet')
+		// Theme Styles
+		link(href='public/stylesheets/ada.css', rel='stylesheet')
+		link(href='public/stylesheets/custom.css', rel='stylesheet')
+		// HTML5 shiv for IE8 support
+		//if lt IE 9
+			script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+	body
+		
+		#tborder
+		#header
+			.top
+				a.brand(href='/')
+					span
+						| OSIMORE
+						img(src='public/images/osimore.fw.png', height='50', width='50', alt='', )
+		nav.navbar.navbar-ada(role='navigation')
+			.navbar-header
+				button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+			include menu.pug
+		
+					
+
+		#posts.container
+			
+			.col-md-12
+			
+			each val,i in comments
+				if(val.pause==false)
+						if (i%2==0)
+							section.col-md-4
+								.post
+									.media
+										#slides-1(style='opacity: 1; display: block;')
+											img(src=`${val.img}`  height="150" width="200" class="img-thumbnail center-block" )
+											
+										.caption.text-center
+											a.post-title(href=`${val._id}`) #{val.name}
+														h4 #{val.description}
+											span.post-date #{prettyDate(val.date)}
+											a(href=`${val.author}`) 
+												h6 written by: #{val.author}
+														
+		
+						else
+							section.col-md-4.wow.fadeIn
+								.post
+									.row
+										.col-md-6.media
+											img.img-responsive(src=`${val.img}`  class="img-thumbnail center-block")
+										.col-md-6.caption
+											
+											a.post-title(href=`${val._id}`)
+												span.post-tag #{val.name}
+												
+											h3.post-date #{prettyDate(val.date)}
+											p.post-description #{val.description}
+												
+												 
+												a(href=`${val.author}`)
+													h6 written by:#{val.author}
+
+
+
+		include footer.pug
+
+		

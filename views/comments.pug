@@ -1,0 +1,178 @@
+#footer
+
+
+						
+			#subscribe
+				.container
+					
+						form(name='myForm',class='col-12-sm',action='/api/comments',method='post',onsubmit="return validateForm()")
+						
+							.container
+									.row
+									
+									
+											.form-group.col-sm-11
+												
+												input.form-control(type='text',name='comment', placeholder='Add a comment..')
+												input.form-control.input-sm(type='hidden',name='id', value=`${post.id}`)
+												
+											
+											.form-group.col-sm-1
+												
+												
+										
+												button.btn.btn-ada-dark(type='submit') 
+														i.fa.fa-plus
+														
+							
+								
+									
+						div#commentsdiv.col-12-sm
+						
+						
+							h4 ...Comments
+							each val in post.comments.reverse()
+								.panel.panel-default
+									.panel-heading
+										button.close(data-dismiss='alert') ×
+
+
+										if (val.author==null||undefined)
+											h4 Anonymous
+										else
+											h4=val.author
+									
+										-var pdate=Date.parse(val.date);
+										-var date = new Date();
+										-var cdate=Date.parse(date);
+										-var y=cdate-pdate;
+										
+										-var dayms=24*60*60*1000;
+										-var monthms=30*dayms;
+										-var yearms=365*dayms;
+										
+										if (y<60*1000)
+											h5 Written  #{Math.floor(y/(1000))} seconds ago
+										
+										else if (y<60*60*1000)
+											h5 Written  #{Math.floor(y/(60*1000))} minutes ago
+										
+										 
+										else if (y<dayms)
+											h5  #{Math.floor(y/(60*60*1000))} hours ago
+										else if (y>dayms&&y<monthms)
+											h5 Written  #{Math.floor(y/(dayms))} day(s) ago
+										else if (y>monthms&&y<yearms)
+											h5 Written  #{Math.floor(y/(monthms))} month(s) ago
+										else if (Math.floor(y/(yearms))==1)
+											h5 Written  #{Math.floor(y/(yearms))} year ago
+										
+										
+										else if (y>=yearms)
+											h5 Written  #{Math.floor(y/(yearms))} years ago
+										
+											
+							
+										
+										
+											  
+								
+	
+									
+										
+									
+										
+									
+										
+											
+										
+										 
+									.panel-body
+										p.commentp=val.comment 
+										
+										
+										//place hidden panel  form replies as a loop within current loop
+										//if(val.comment.replies!==empty){loop through}
+
+							
+						
+								
+							
+							
+							
+								
+												
+											
+			#links
+				.container
+					.col-sm-2
+						p.brand
+							a(href='/')
+							
+								span OSIMORE
+					.col-sm-8
+						ul.list-inline
+						
+							li
+								a(href='/contact') Contact
+					.col-md-2
+						ul.list-inline
+							li
+								a(href='#')
+									i.fa.fa-facebook
+							li
+								a(href='/blogger')
+									i.fa.fa-key
+			// Vendor Scripts
+			script(src='public/javascripts/jquery-1.11.3.min.js')
+			script.
+					function validateForm() {
+					var x = document.forms["myForm"]["comment"].value;
+					if (x == "") {
+					 document.forms["myForm"]["comment"].placeholder='This search field empty, cannot add empty comment';
+					return false;
+					}
+					/*$('form[name=""]').submit(function(){
+							$.ajax({
+							  url: $('#form').attr('action'),
+							  type: 'POST',
+							  data : $('#form').serialize(),
+							  success: function(){
+								console.log('form submitted.');
+							  }
+							});
+							return false;
+						});*/
+					}
+					//if admin
+			
+			script.
+					$(document).ready(function(){
+					$(".close").dblclick(function(){
+					//console.log($(this).parent().parent().index());
+					var index=($(this).parent().parent().index())-1;
+					var id=$("input[name='id']").val();
+					//console.log(index,id);
+					var targ=$(this).parent().parent();
+					
+					$.ajax({
+					url: '/api/comments/delete',
+					type: 'POST',
+					 data: {id:id, index:index},
+					success: function(result) {
+					//console.log(result);
+					if(result.removed===1){targ.fadeOut(1000);}
+					},
+					error :function(result){
+								   $("#commentsdiv").append("There was an error",result);
+								}
+					});
+					
+					});
+					});
+
+			script(src='public/javascripts/dropdown.js')
+			
+			
+				
+			

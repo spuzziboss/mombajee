@@ -1,0 +1,90 @@
+
+
+doctype html
+html(lang='en')
+	head
+		title OSIMORE
+		// Fonts
+		link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700italic,800,800italic,700,600italic', rel='stylesheet')
+
+		// Vendor Styles
+		link(href='public/stylesheets/bootstrap.min.css', rel='stylesheet')
+		link(href='public/stylesheets/animate.css', rel='stylesheet')
+		
+		link(href='public/stylesheets/font-awesome.min.css', rel='stylesheet')
+		// Theme Styles
+		link(href='public/stylesheets/ada.css', rel='stylesheet')
+		link(href='public/stylesheets/custom.css', rel='stylesheet')
+		// HTML5 shiv for IE8 support
+		//if lt IE 9
+			script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+	body
+		#tborder
+		#header
+			.top
+				a.brand(href='/')
+					span
+						| OSIMORE
+						img(src='public/images/osimore.fw.png', height='50', width='50', alt='', )
+		nav.navbar.navbar-ada(role='navigation')
+			.navbar-header
+				button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+			include menu.pug
+			#single
+				.container
+				
+					
+					
+						
+						.row
+							.col-sm-12.centered
+								
+								
+								
+										
+
+
+
+								h2 #{post.name}
+										h3.post-date #{prettyDate(post.date)}
+										h4
+											a(href=`${post.author}`) Written by:#{post.author} 
+										
+								
+								.post
+									.embed-container
+										- var a=post.content;//put in function with post.content as an argument
+										- var b=a.substring(0,8);
+										
+										- var c=a.substring(18,a.length);
+										
+										- var d='player.vimeo.com';
+										- var e='/video/';
+										
+										- b=b+d;
+										- b=b+e;
+										- b=b+c;
+										
+									
+									
+										iframe(src=`${b}`, frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="")
+								.comments.centered
+									h4 ...Comment Below
+
+
+											
+											
+											
+																						
+											  
+
+								
+								
+							
+						
+						.comments
+			include comments.pug

@@ -1,0 +1,48 @@
+#slides-1 img{
+	
+    
+    position: relative;
+	
+    }
+	
+
+
+blockquote {
+  background: #f9f9f9;
+ 
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+  
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 5em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+      position: relative;
+     left: -10px
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 5em;
+  line-height: 0.1em;
+  margin-left: 99%;
+ 
+  position: relative;
+    top: 60px;
+    
+}
+
+.post blockquote:after{     left: -105px;
+}
+
+.container h2,h3,h4{
+	
+text-align: center;	
+	
+}

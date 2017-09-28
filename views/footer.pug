@@ -1,0 +1,65 @@
+#footer
+			#subscribe
+				
+					.search
+						form(name='myForm',action='/api/search',method='post',onsubmit="return validateForm()" ).form-group.has-feedback
+							
+								.container
+									.row
+									
+									
+											.form-group.col-sm-11
+												
+												input.form-control(type='text', name='query', placeholder='Search')
+												
+											
+											.form-group.col-sm-1
+												
+												
+										
+												button.btn.btn-ada-dark(type='submit') 
+														i.fa.fa-search
+			.footer
+									
+				.container
+					.col-sm-2
+						p.brand
+							a(href='/')
+							
+								span OSIMORE
+					.col-sm-8
+						ul.list-inline
+						
+							li
+								a(href='/contact') Contact
+					.col-md-2
+						ul.list-inline
+							li
+								a(href='#')
+									i.fa.fa-facebook
+							li
+								a(href='/blogger')
+									i.fa.fa-key
+			// Vendor Scripts
+			script.
+					function validateForm() {
+					var x = document.forms["myForm"]["query"].value;
+					if (x == "") {
+					 document.forms["myForm"]["query"].placeholder='This search field empty, cannot do an empty search';
+					return false;
+					}
+					}
+				
+		
+					
+					
+			
+					
+
+			script(src='/public/javascripts/jquery-1.11.3.min.js')
+			
+			script(src='/public/javascripts/dropdown.js')
+			
+			
+				
+			

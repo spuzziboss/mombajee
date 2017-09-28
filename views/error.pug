@@ -1,0 +1,57 @@
+
+
+doctype html
+html(lang='en')
+	head
+		title OSIMORE
+		// Fonts
+		link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700italic,800,800italic,700,600italic', rel='stylesheet')
+
+		// Vendor Styles
+		link(href='public/stylesheets/bootstrap.min.css', rel='stylesheet')
+		link(href='public/stylesheets/animate.css', rel='stylesheet')
+		
+		link(href='public/stylesheets/font-awesome.min.css', rel='stylesheet')
+		// Theme Styles
+		link(href='public/stylesheets/ada.css', rel='stylesheet')
+		link(href='public/stylesheets/custom.css', rel='stylesheet')
+		// HTML5 shiv for IE8 support
+		//if lt IE 9
+			script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+	body
+		#tborder
+		#header
+			.top
+				a.brand(href='/')
+					span
+						| OSIMORE
+						img(src='public/images/osimore.fw.png', height='50', width='50', alt='', )
+		nav.navbar.navbar-ada(role='navigation')
+			.navbar-header
+				button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+			include menu.pug
+			#single
+				.container
+					.page-404
+						h1 404
+						h2 ...um we didn't find what you were looking for...
+						p That's either because there was an error or the post has been removed!.
+						a.btn.btn-ada-dark(href='/') Back to Home
+
+
+											
+											
+											
+																						
+											  
+
+								
+								
+							
+
+						.comments
+			include footer.pug

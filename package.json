@@ -1,0 +1,38 @@
+{
+  "name": "mombajeee",
+  "version": "1.0.0",
+  "description": "A blog to spread the truth",
+  "main": "app.js",
+  "dependencies": {
+    "angular-route": "^1.6.5",
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.17.2",
+    "bootstrap": "^3.3.7",
+    "connect-mongodb-session": "^1.3.0",
+    "cookie-parser": "^1.4.3",
+    "core-util-is": "^1.0.2",
+    "debug": "^2.6.8",
+    "express": "^4.15.4",
+    "express-session": "^1.15.5",
+    "helmet": "^3.8.1",
+    "jquery": "^3.2.1",
+    "mongodb": "^2.2.31",
+    "mongoose": "4.9.0",
+    "morgan": "^1.8.2",
+    "node-cron": "^1.2.1",
+    "nodemailer": "^3.1.8",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
+    "pug": "^2.0.0-rc.3",
+    "quill": "^1.3.1",
+    "serve-favicon": "^2.4.3",
+    "xoauth2": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "spuzziboss",
+  "license": "ISC"
+}

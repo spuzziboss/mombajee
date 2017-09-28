@@ -1,0 +1,45 @@
+doctype html
+html(ng-app='myApp')
+	head
+		meta(charset='utf-8')
+		title Blogger Admin
+		link(rel='stylesheet', href='public/stylesheets/bootstrap.min.css')
+		link(rel='stylesheet', href='public/stylesheets/font-awesome.min.css')
+		link(rel='stylesheet', href='public/stylesheets/blogger.css')
+		link(rel='stylesheet', href='public/stylesheets/quill.core.css')
+		
+	body
+		script(src='public/javascripts/angular.min.js')
+		script(src='public/javascripts/angular-route.min.js')
+		.container
+			.row
+				.col-sm-3
+					
+						ul.list-inline
+							li
+								a(href='/')
+							
+									i.fa.fa-home
+							li
+								a(href='#posts')
+							
+									i.fa.fa-bullhorn
+										
+							li
+								a(href='#user')
+							
+									i.fa.fa-user-o
+							li
+								a(href='#writer')
+							
+									i.fa.fa-pencil
+				.col-sm-9
+					div(class="ng-view")
+				
+	
+	script(src='public/javascripts/mombajee.js')
+	script(src='public/javascripts/quill.min.js')
+	
+	
+
+	

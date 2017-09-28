@@ -1,0 +1,61 @@
+<!doctype html>
+<html ng-app="">
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+     <link rel="stylesheet" href="public/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="public/stylesheets/font-awesome.min.css">
+    <link rel="stylesheet" href="public/stylesheets/blogger.css">
+ 
+
+
+</head>
+
+<body>
+
+<div class="container">
+          
+<div class="col-sm-2">
+
+<nav>
+ <ul class="list-inline">
+              <li><a href=""><i class="fa fa-bullhorn"></i></a></li>
+             
+            </ul>
+
+</nav>
+</div>
+
+
+<div class="col-sm-10">
+<form action="/api/todos" method="POST">
+  <input type="text" placeholder="name" name="name">
+  <input type="text" placeholder="quote" name="quote">
+  <button type="submit">Submit</button>
+</form>
+</div>
+
+
+</div>
+
+</body>
+<script src="public/javascripts/angular.min.js"></script>
+<script>
+var app = angular.module("myApp",  [require('angular-route')]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "main.htm"
+    })
+    .when("/red", {
+        templateUrl : "red.htm"
+    })
+    .when("/green", {
+        templateUrl : "green.htm"
+    })
+    .when("/blue", {
+        templateUrl : "blue.htm"
+    });
+});
+</script>
+</html>

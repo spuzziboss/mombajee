@@ -1,0 +1,27 @@
+
+#navbar-collapse-1.collapse.navbar-collapse.navbar-ex1-collapse
+				ul.nav.navbar-nav
+					li.dropdown.active
+						a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+							| Authors 
+							span.caret
+						ul.dropdown-menu
+							li
+								a(href='/Gorgon') Gorgon
+								a(href='/Nihilus') Nihilus
+						
+							li.divider
+							
+							
+						-function prettyDate(dateString){
+							-var date = new Date(dateString);
+							-var d = date.getDate();
+							-var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+							-var m = monthNames[date.getMonth()];
+							-var y = date.getFullYear();
+							-return d+' '+m+' '+y;
+						-}
+				
+					
+			
+

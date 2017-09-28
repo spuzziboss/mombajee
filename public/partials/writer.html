@@ -1,0 +1,63 @@
+<div ng-init="writer()">
+
+
+<form name="myForm"  novalidate   method="post" action="/api/create/" class="simple-form" ng-submit="setContent(content)">
+    
+                  <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name"  placeholder="Name"  required>
+                 
+                
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Description</label>
+                    <input type="text" class="form-control" name="description" placeholder="Description" required>
+                  </div>
+               
+                           <div class="form-group">
+                    <label for="name">Category</label>
+                    <br>
+                    
+                    DeUnfairings:<input type="radio" class="form-control radiob" name="Category" value="DeUnfairings" required >
+                    
+                    Emacs: <input type="radio" class="form-control radiob" name="Category" value="emacs" required >
+                  </div>
+                  <br>
+                  
+                     <div class="form-group">
+                    <label for="name">Paused</label>
+                    <br>
+                    Yes:<input type="radio" class="form-control radiob" name="pause" value="true" required >
+               
+                    No:<input type="radio" class="form-control radiob" name="pause" value="false" required >
+                  </div>
+                  
+                     <div class="form-group">
+                    <label for="name">Type</label>
+                    <br>
+                    Article:<input type="radio" ng-model="type" class="form-control radiob" name="type" value="article" required >
+               
+                    Video:<input type="radio" ng-model="type"  class="form-control radiob" name="type" value="video" required >
+                  </div>
+                        <div class="form-group" ng-hide="type=='article'" >
+                    <label for="name">VideoUrl</label>
+                    <input type="text" class="form-control" id="VideoUrl" placeholder="VideoUrl">
+                  </div>
+                  
+                  
+ <br/> 
+    
+     <label>Set an Image: <input  name="img" type="file" value=""  required  ></label>
+ <br/> 
+<input  name="content" type="hidden"   ng-value="content" >
+
+<br/>
+<div ng-hide="type=='video'" >
+<div id="editor-container" ></div>
+</div>                
+                  
+<button class="btn btn-primary btn-ada-dark"  ng-disabled="myForm.$invalid"  type="submit" > Post this Article</button>
+   
+ </form>
+
+</div>
