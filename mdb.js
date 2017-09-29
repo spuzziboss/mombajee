@@ -128,7 +128,7 @@ mdb.post('/api/create/', function(req, res) {
 	
 	
 	 
-});
+
 
 mdb.post('/api/mail',function(req,res){
 console.log(req.body);	
@@ -138,23 +138,21 @@ var message=req.body.message;
 var name=req.body.name;
 
 var nodemailer = require('nodemailer');
-//var xoauth2 = require('xoauth2');
+var XOAuth2= require('xoauth2');
 
 
-let transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-        type: 'OAuth2',
-        user: 'osimore2016@gmail.com',
-        clientId: '156852481759-sjc5ipo9c0pbsp7gc48q69nugdda8g28.apps.googleusercontent.com',
-        clientSecret: '-VeozoEgVDY4SYKE6IGyeH3U',
-        refresh_token: "1/6gBTJyW1VTYMP8BE7qH_zdBgDAtrWgCJpM5qJ9zbMRs",
-        access_token: "ya29.GlvRBGjrYU1hQUSxKaO93Q1NWIg06UgSDqUUbaDnCbQEzCB4bXN140MR_s_igpURNh1JneuonBV5glvLP9dzb13l5Bp16j1D_Sg4cf_A92ktGkHX798dPB9S6fVL", 
-        expires_in: 3600 
-    }
+var transporter= nodemailer.createTransport("SMTP",{
+        service:"Gmail",
+        auth:{
+            XOAuth2: {
+                user: 'osimore2016@gmail.com',
+                clientId: '156852481759-sjc5ipo9c0pbsp7gc48q69nugdda8g28.apps.googleusercontent.com',
+                clientSecret: '-VeozoEgVDY4SYKE6IGyeH3U',
+              refresh_token: "1/6gBTJyW1VTYMP8BE7qH_zdBgDAtrWgCJpM5qJ9zbMRs"
+            }
+        }
 });
+
 /*
 var transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -240,7 +238,7 @@ mdb.post('/api/comments',function(req,res){
 	
 	
 	
-	});//NOT WORKING may work on a server
+	});
 	
 	
 mdb.post('/api/comments/delete',function(req,res){	
