@@ -116,6 +116,7 @@ mdb.post('/api/create/', function(req, res) {
 	 
 	if(err){
 		console.log(err);
+		 res.render('error.pug',{x:err});}
 	
  
 	 }
@@ -127,7 +128,7 @@ mdb.post('/api/create/', function(req, res) {
 	
 	
 	 
-});
+
 
 mdb.post('/api/mail',function(req,res){
 console.log(req.body);	
@@ -137,11 +138,26 @@ var message=req.body.message;
 var name=req.body.name;
 
 var nodemailer = require('nodemailer');
-var xoauth2 = require('xoauth2');
+var XOAuth2= require('xoauth2');
 
 
+var transporter= nodemailer.createTransport("SMTP",{
+        service:"Gmail",
+        auth:{
+            XOAuth2: {
+                user: 'osimore2016@gmail.com',
+                clientId: '156852481759-sjc5ipo9c0pbsp7gc48q69nugdda8g28.apps.googleusercontent.com',
+                clientSecret: '-VeozoEgVDY4SYKE6IGyeH3U',
+              refresh_token: "1/6gBTJyW1VTYMP8BE7qH_zdBgDAtrWgCJpM5qJ9zbMRs"
+            }
+        }
+});
+
+/*
 var transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
         xoauth2: xoauth2.createXOAuth2Generator({
             user: 'osimore2016@gmail.com',
@@ -155,10 +171,10 @@ var transporter = nodemailer.createTransport({
         })
     }
 });
-
+*/
 var mailOptions = {
     from:email,
-    to: 'spuzziboss@gmail.com',
+    to: 'osimore2016@gmail.com',
     subject: 'Nodemailer test',
     text:message
 };
@@ -222,7 +238,7 @@ mdb.post('/api/comments',function(req,res){
 	
 	
 	
-	});//NOT WORKING may work on a server
+	});
 	
 	
 mdb.post('/api/comments/delete',function(req,res){	
@@ -276,7 +292,7 @@ mdb.post('/api/search',function(req,res){
 	  //var startTime = Date.now();
 	Todo.find(query,'date author description img name').sort({date:-1}).exec( function (err, result) 
    {
-             if (err) { mongoose.connection.close();console.log(err); res.render('error.pug');}
+             if (err) { mongoose.connection.close();console.log(err); res.render('error.pug',{x:err});}
 			 else {
              //console.log( result.length);
 			 // console.log('Finished after ' + (Date.now() - startTime) + 'ms');
