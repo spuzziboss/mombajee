@@ -101,7 +101,7 @@ app.use(mdb);
 
 
 var favicon = require('serve-favicon');
-app.use(favicon('/public/images/favicon.ico'));
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 
 
