@@ -141,7 +141,9 @@ var xoauth2 = require('xoauth2');
 
 
 var transporter = nodemailer.createTransport({
-    service: 'smtp.gmail.com',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
         xoauth2: xoauth2.createXOAuth2Generator({
             user: 'osimore2016@gmail.com',
