@@ -116,12 +116,21 @@ mdb.post('/api/create/', function(req, res) {
 	 
 	if(err){
 		console.log(err);
-		 res.render('error.pug',{x:err});}
+		res.render('error.pug',{x:err});}
 	
  
-	 }
-	else{res.redirect('/'+post._id);	 }	
+	
+	else if(!err){res.redirect('/'+post._id);}
+	
+	
 	});
+	
+		
+		
+		
+		
+		
+		
 
 
 	
