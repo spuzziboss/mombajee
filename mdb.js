@@ -116,6 +116,7 @@ mdb.post('/api/create/', function(req, res) {
 	 
 	if(err){
 		console.log(err);
+		 res.render('error.pug',{x:err});}
 	
  
 	 }
@@ -293,7 +294,7 @@ mdb.post('/api/search',function(req,res){
 	  //var startTime = Date.now();
 	Todo.find(query,'date author description img name').sort({date:-1}).exec( function (err, result) 
    {
-             if (err) { mongoose.connection.close();console.log(err); res.render('error.pug');}
+             if (err) { mongoose.connection.close();console.log(err); res.render('error.pug',{x:err});}
 			 else {
              //console.log( result.length);
 			 // console.log('Finished after ' + (Date.now() - startTime) + 'ms');
