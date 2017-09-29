@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "A blog to spread the truth",
   "main": "app.js",
-  "engines":{
-	"node":"6.9.2",
-	"npm":"5.4.2"  
-	  
-   },
+  "engines": {
+    "node": "6.9.2",
+    "npm": "5.4.1"
+  },
   "dependencies": {
     "angular-route": "^1.6.5",
     "bcrypt-nodejs": "^0.0.3",
@@ -26,6 +25,7 @@
     "morgan": "^1.8.2",
     "node-cron": "^1.2.1",
     "nodemailer": "^3.1.8",
+    "nodemailer-smtp-transport": "^2.7.4",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",
