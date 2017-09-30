@@ -7,7 +7,7 @@
   <div class="modal-content">
     <span ng-click="hide()" class="close">&times;</span>
     <p>You sure you want delete this? If so double click "Yes"</p>
-      <button  ng-dblclick="remove($event)" type="button" class="btn btn-danger btn-lg">Yes</button>
+      <button  ng-click="remove($event)" type="button" class="btn btn-danger btn-lg">Yes</button>
       <button ng-click="hide()" type="button" class="btn btn-success btn-lg">No</button>
   </div>
 
@@ -24,7 +24,7 @@
   <span style="float:right"><img src="{{x.img}}" width="100" height="100" alt=""></span>
   </div>
   <div class="panel-footer">
-  <button  ng-dblclick="pause($event)" type="button" class="btn btn-success" id="{{x._id}}">Pause</button>
+  <button  ng-click="pause($event)" type="button" class="btn btn-success" id="{{x._id}}">Pause</button>
   <button type="button" class="btn btn-primary">Edit<i class="fa fa-tags"></i></button>
   <button  ng-click="show()" type="button" class="btn btn-danger" data-tag="{{x._id}}">Delete<i class="fa fa-remove"></i></button>
   <a href="/{{x._id}}"><button   type="button" class="btn btn-warning">View</button></a>
