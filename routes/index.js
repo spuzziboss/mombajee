@@ -16,7 +16,7 @@ router.get('/', function(req, res) {
 
 
 var objreq={pause:false};
- 
+ /*
  if(req.session.site_views){
       req.session.site_views++;
      console.log("You visited this site " + req.session.site_views + " times");
@@ -26,7 +26,7 @@ var objreq={pause:false};
       console.log("Welcome to this site for the first time!");
 	  	 req.session.username='Nihilus';
    }
-
+*/
 Quote.find().count().exec(function(err,count) {
 	var rand=Math.ceil((Math.random())*count)-1;
 	//console.log(rand);
