@@ -156,35 +156,23 @@ var transport = nodemailer.createTransport(smtpTransport({
     auth:{
         xoauth2: xoauth2.createXOAuth2Generator({
              user: 'osimore2016@gmail.com',
-			 clientId: '156852481759-sjc5ipo9c0pbsp7gc48q69nugdda8g28.apps.googleusercontent.com',
-			 clientSecret: '-VeozoEgVDY4SYKE6IGyeH3U',
-			 refresh_token: "1/6gBTJyW1VTYMP8BE7qH_zdBgDAtrWgCJpM5qJ9zbMRs"
+			 client_id:"922714883008-pgdulh6saa2qpr97vp3k6jfnokookara.apps.googleusercontent.com",
+			 project_id:"mombajee",
+			 auth_uri:"https://accounts.google.com/o/oauth2/auth",
+			 token_uri:"https://accounts.google.com/o/oauth2/token",
+			 auth_provider_x509_cert_url:"https://www.googleapis.com/oauth2/v1/certs",
+			 client_secret:"D28DdqktRMXt42xiwwpYsic_"
 			 
 	})		 
-	}
+	},
+    tls: {
+        rejectUnauthorized: false
+    }
 })
 );
 
 
-/*
-var transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-        xoauth2: xoauth2.createXOAuth2Generator({
-            user: 'osimore2016@gmail.com',
-            clientId: '156852481759-sjc5ipo9c0pbsp7gc48q69nugdda8g28.apps.googleusercontent.com',
-            clientSecret: '-VeozoEgVDY4SYKE6IGyeH3U',
-			access_token: "ya29.GlvRBGjrYU1hQUSxKaO93Q1NWIg06UgSDqUUbaDnCbQEzCB4bXN140MR_s_igpURNh1JneuonBV5glvLP9dzb13l5Bp16j1D_Sg4cf_A92ktGkHX798dPB9S6fVL", 
-            token_type: "Bearer", 
-            expires_in: 3600, 
-            refresh_token: "1/6gBTJyW1VTYMP8BE7qH_zdBgDAtrWgCJpM5qJ9zbMRs"
 
-        })
-    }
-});
-*/
 var mailOptions = {
     from:email,
     to: 'osimore2016@gmail.com',
