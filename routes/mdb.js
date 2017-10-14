@@ -153,18 +153,13 @@ var smtpTransport = require('nodemailer-smtp-transport');
 
 var transport = nodemailer.createTransport(smtpTransport({
     service: 'Gmail',
-    auth:{
-        xoauth2: xoauth2.createXOAuth2Generator({
-             user: 'osimore2016@gmail.com',
-			 client_id:"922714883008-pgdulh6saa2qpr97vp3k6jfnokookara.apps.googleusercontent.com",
-			 project_id:"mombajee",
-			 auth_uri:"https://accounts.google.com/o/oauth2/auth",
-			 token_uri:"https://accounts.google.com/o/oauth2/token",
-			 auth_provider_x509_cert_url:"https://www.googleapis.com/oauth2/v1/certs",
-			 client_secret:"D28DdqktRMXt42xiwwpYsic_"
-			 
-	})		 
-	},
+  
+    secure: false, // use SSL
+  
+    auth: {
+        user: "osimore2016@gmail.com",
+        pass: "PAsha135#$"
+    },
     tls: {
         rejectUnauthorized: false
     }
@@ -185,7 +180,8 @@ transport.sendMail(mailOptions, function (err) {
         console.log(err,'Error');
 		res.redirect('/error');
     } else {
-        console.log(res,'Email Sent');
+        console.log('Email Sent');
+		res.redirect('/contact');
     }
 });
 
