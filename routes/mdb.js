@@ -169,8 +169,8 @@ var transport = nodemailer.createTransport(smtpTransport({
 
 
 var mailOptions = {
-    
-   
+    from:email,
+    to: 'osimore2016@gmail.com',
     subject: 'osimore.com contact form',
     text:message,
 	envelope: {
