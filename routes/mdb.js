@@ -152,13 +152,13 @@ var smtpTransport = require('nodemailer-smtp-transport');
 
 
 var transport = nodemailer.createTransport(smtpTransport({
-    service: 'Gmail',
-  
-    secure: false, // use SSL
+  host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
   
     auth: {
         user: "osimore2016@gmail.com",
-        pass: "PAsha135#$"
+        pass: "IBria135#$"
     },
     tls: {
         rejectUnauthorized: false
@@ -169,10 +169,14 @@ var transport = nodemailer.createTransport(smtpTransport({
 
 
 var mailOptions = {
-    from:email,
-    to: 'osimore2016@gmail.com',
-    subject: 'Nodemailer test',
-    text:message
+    
+   
+    subject: 'osimore.com contact form',
+    text:message,
+	envelope: {
+        from:email, // used as MAIL FROM: address for SMTP
+        to: 'osimore2016@gmail.com' // used as RCPT TO: address for SMTP
+    }
 };
 
 transport.sendMail(mailOptions, function (err) {
