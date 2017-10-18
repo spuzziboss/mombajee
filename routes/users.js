@@ -40,17 +40,16 @@ passport.use(new LocalStrategy(
 
 
 /* GET users listing. */
-users.get('/login', function(req, res, next) {
-console.log('hitting log in');
+users.route('/login')
+.get( function(req, res) {
+console.log('hitting log in freshly');
   res.render('login.pug', {
    
    
    
   });		
 		
-});
-
-users.post('/login', function(req, res, next) {
+}).post( function(req, res) {
  //console.log('was hit by log in form');	
 	
  var username=req.body.username;
