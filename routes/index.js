@@ -51,14 +51,29 @@ quote = JSON.parse(JSON.stringify(quote));
 
 
 });
+
+
 router.get('/contact', function(req, res) {
-	
+
+  //console.log(req.query.email);
+ if(req.query.email==='1'){
+   
+ res.render('contact.pug', {
+   
+   x:'The email has been sent',
+   y:2
+  });
+	 
+	 
+	 }
+else if(req.query.email!=='1'){
+	   
 res.render('contact.pug', {
    
    
    
   });		
-		
+}	
 		
    
  
