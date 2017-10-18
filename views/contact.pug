@@ -1,3 +1,105 @@
+<<<<<<< HEAD
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(name='description', content='Sometimes it is a fool who can tell the truth')
+		meta(name='author', content='OSIMORE')
+		title Contact Us
+		// Fonts
+		link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700italic,800,800italic,700,600italic', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Merriweather', rel='stylesheet')
+		// Vendor Styles
+		link(href='public/stylesheets/bootstrap.min.css', rel='stylesheet')
+		link(href='public/stylesheets/animate.css', rel='stylesheet')
+		link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
+		// Theme Styles
+		link(href='public/stylesheets/ada.css', rel='stylesheet')
+		link(href='public/stylesheets/custom.css', rel='stylesheet')
+		// HTML5 shiv for IE8 support
+		//if lt IE 9
+			script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+	body
+		#tborder
+		#header
+			.top
+				
+				a.brand(href='/')
+					span
+						| OSIMORE
+						img(src='public/images/osimore.fw.png', height='50', width='50', alt='', style='transform: scaleY(-1)')
+			nav.navbar.navbar-ada(role='navigation')
+				.navbar-header
+					button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+				#navbar-collapse-1.collapse.navbar-collapse.navbar-ex1-collapse
+					ul.nav.navbar-nav
+						include menu.pug
+		#single
+			.container
+				if (y&&y===2)
+				
+					div.alert.alert-info #{x}
+					
+				#map
+				.post
+					.caption
+						.row.contact-info
+							.col-md-4.text-center
+								i.fa.fa-home.fa-4x
+								h4 Address
+								p
+									| Some wah 'bout hey
+									br
+									|                   Babadus
+							.col-md-4.text-center
+								i.fa.fa-phone.fa-4x
+								h4 Phone(Watsapp)
+								p
+									| Local: +1 (234) 567890
+									br
+									|                   Mobile: 1800 92 6543210
+							.col-md-4.text-center
+								i.fa.fa-envelope-o.fa-4x
+								h4 Email
+								p
+									a.email jones@osimore.com
+									br
+									a.email osimore2016@gmail.com
+						.header
+							h1 Drop us a line
+						.row
+							.col-md-6.col-md-offset-3
+								form(method='post', action='/api/mail')
+									.form-group
+										label(for='name') Name
+										input.form-control(type='text', name='name', placeholder='Name')
+									.form-group
+										label(for='email') Email
+										input.form-control(type='text', name='email', placeholder='Email', required='')
+									.form-group
+										label(for='message') Message
+										textarea.form-control(type='text',  name='message', placeholder='Message')
+									button.btn.btn-ada-dark(type='submit') Send
+		#footer
+			include footer.pug
+		// GO0GLE MAPS
+		script(type='text/javascript', src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHlRTyrbTwGwwQ0PoHnTi2Bt4ZzWdTtj4&callback=initMap",
+    			async defer)
+		script.
+			var map;
+			function initMap() {
+			map = new google.maps.Map(document.getElementById('map'), {
+			center: {lat: 13.113222, lng: -59.598808},
+			zoom:10
+			});
+			}
+=======
 doctype html
 html(lang='en')
 	head
@@ -94,3 +196,4 @@ html(lang='en')
 			zoom:10
 			});
 			}
+>>>>>>> e0c63280a732e55b4526bc21d1ef00c0102b77a8
