@@ -69,7 +69,7 @@ conn.on('error', console.error.bind(console, 'connection error:'));
 var cookieParser = require('cookie-parser');
 var bodyParser= require('body-parser');
 app.use('/public', express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/static'));
+
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
@@ -101,9 +101,9 @@ app.use(mdb);
 
 
 var favicon = require('serve-favicon');
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -111,11 +111,9 @@ app.set('view engine', 'pug');
 
 
 
+var port = process.env.PORT || 3000;
 
-app.listen(3000,function() {
- console.log('Listening on port 3000');
- 
-});
+app.listen(port);
 
  
 

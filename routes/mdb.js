@@ -2,6 +2,7 @@ var express = require('express');
 var mdb = express.Router();
 var bodyParser= require('body-parser');
 var mongoose = require('mongoose');
+ var path = require('path');
 mongoose.set('debug', true);
 
 
@@ -116,18 +117,28 @@ mdb.post('/api/create/', function(req, res) {
 	 
 	if(err){
 		console.log(err);
+		res.render('error.pug',{x:err});}
 	
  
-	 }
-	else{res.redirect('/'+post._id);	 }	
+	
+	else if(!err){res.redirect('/'+post._id);}
+	
+	
 	});
+	
+});
+		
+		
+		
+		
+		
 
 
 	
 	
 	
 	 
-});
+
 
 mdb.post('/api/mail',function(req,res){
 console.log(req.body);	
@@ -137,38 +148,51 @@ var message=req.body.message;
 var name=req.body.name;
 
 var nodemailer = require('nodemailer');
-var xoauth2 = require('xoauth2');
+var xoauth2= require('xoauth2');
+var smtpTransport = require('nodemailer-smtp-transport');
 
 
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
+var transport = nodemailer.createTransport(smtpTransport({
+  host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+  
     auth: {
-        xoauth2: xoauth2.createXOAuth2Generator({
-            user: 'osimore2016@gmail.com',
-            clientId: '156852481759-sjc5ipo9c0pbsp7gc48q69nugdda8g28.apps.googleusercontent.com',
-            clientSecret: '-VeozoEgVDY4SYKE6IGyeH3U',
-			access_token: "ya29.GlvRBGjrYU1hQUSxKaO93Q1NWIg06UgSDqUUbaDnCbQEzCB4bXN140MR_s_igpURNh1JneuonBV5glvLP9dzb13l5Bp16j1D_Sg4cf_A92ktGkHX798dPB9S6fVL", 
-            token_type: "Bearer", 
-            expires_in: 3600, 
-            refresh_token: "1/6gBTJyW1VTYMP8BE7qH_zdBgDAtrWgCJpM5qJ9zbMRs"
-
-        })
+        user: "osimore2016@gmail.com",
+        pass: "IBria135#$"
+    },
+    tls: {
+        rejectUnauthorized: false
     }
-});
+})
+);
+
+
 
 var mailOptions = {
     from:email,
-    to: 'spuzziboss@gmail.com',
-    subject: 'Nodemailer test',
-    text:message
+    to: 'osimore2016@gmail.com',
+    subject: 'osimore.com contact form',
+    text:message,
+	envelope: {
+        from:email, // used as MAIL FROM: address for SMTP
+        to: 'osimore2016@gmail.com' // used as RCPT TO: address for SMTP
+    }
 };
 
-transporter.sendMail(mailOptions, function (err) {
+transport.sendMail(mailOptions, function (err) {
     if(err){
         console.log(err,'Error');
 		res.redirect('/error');
     } else {
-        console.log(res,'Email Sent');
+        console.log('Email Sent');
+		
+		
+		res.redirect('/contact?email=1');
+
+  
+   
+  
     }
 });
 
@@ -222,7 +246,7 @@ mdb.post('/api/comments',function(req,res){
 	
 	
 	
-	});//NOT WORKING may work on a server
+	});
 	
 	
 mdb.post('/api/comments/delete',function(req,res){	
@@ -276,7 +300,7 @@ mdb.post('/api/search',function(req,res){
 	  //var startTime = Date.now();
 	Todo.find(query,'date author description img name').sort({date:-1}).exec( function (err, result) 
    {
-             if (err) { mongoose.connection.close();console.log(err); res.render('error.pug');}
+             if (err) { mongoose.connection.close();console.log(err); res.render('error.pug',{x:err});}
 			 else {
              //console.log( result.length);
 			 // console.log('Finished after ' + (Date.now() - startTime) + 'ms');
