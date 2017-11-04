@@ -74,10 +74,7 @@ app.use('/public', express.static(__dirname + '/public'));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
-app.use(express.static(path.join(__dirname, 'public')));
 
-var favicon = require('serve-favicon');
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
  
  
 
@@ -101,7 +98,10 @@ app.use(mdb);
  
 
 
+app.use(express.static(path.join(__dirname, 'public')));
 
+var favicon = require('serve-favicon');
+app.use(favicon(path.join(__dirname, 'public/images/', 'favicon.ico')));
 
 
 
