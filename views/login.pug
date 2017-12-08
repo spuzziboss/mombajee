@@ -137,7 +137,7 @@ html(ng-app='Userapp')
 						i.fa.fa-key.fa-5x(ng-class='{ active: isSet(2)}')
 					span
 				div
-					form.register-form(ng-show='isSet(1)')
+					form.register-form(ng-show='isSet(1)',action="/loginFB", method="POST")
 						p.message Sign In using your Facebook account
 						button(type="submit")  Sign In
 					form.login-form(ng-show='isSet(2)' ,action="/login", method="POST")

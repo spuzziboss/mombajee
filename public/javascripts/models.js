@@ -1,7 +1,7 @@
 
 var mongoose = require('mongoose');
 mongoose.set('debug', true);
-
+var bcrypt=require('bcrypt-nodejs');
 
 
 /*
@@ -46,12 +46,29 @@ var userSchema = new Schema({
   _id:ObjectId,
   username: String,
   password:String,
-  LastLog:Date
- //usertype admin||normal
+  LastLog:Date,
+  userType:String
+
   
 });
+ userSchema.methods.verifyPassword = function(password, callback,err) {
+   return bcrypt.compareSync(password, this.password);
+}; 
 
-var USchema = mongoose.model('users', userSchema);
+var userFBSchema = new Schema({
+  _id:ObjectId,
+  facebookId:Number,
+  email: String,
+  name: String,
+  LastLog:Date,
+  user_birthday:Date,
+  public_profile:[Schema.Types.Mixed],
+  userType:String
+
+  
+});
+var USchema = mongoose.model('admin', userSchema);
+var UFBSchema = mongoose.model('users', userFBSchema,'users');
 
 var TSchema = mongoose.model('post', TodoSchema,'posts');
 var QSchema = mongoose.model('quote', quoteSchema);
@@ -61,6 +78,7 @@ var db='mongodb://spuzziboss:PAsha135#$@ds161630.mlab.com:61630/mombajee';
 
 
 exports.USchema = USchema;
+exports.UFBSchema = UFBSchema;
 exports.TSchema = TSchema;
 exports.QSchema = QSchema;
 exports.db =db;

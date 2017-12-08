@@ -1,33 +1,14 @@
-// JavaScript Document
- var MongoClient = require('mongodb').MongoClient
-  , assert = require('assert');
-var mongoose = require('mongoose');
-
-var TodoSchema = new mongoose.Schema({
-  content: String,
-  date:Date,
-  author:String,
-  description:String,
-  name:String,
-  img:String,
+var bcrypt=require('bcrypt-nodejs'); 
+var hash = bcrypt.hashSync("PAsha135#$");
+ console.log(hash);
+ var y = bcrypt.hashSync("PAsha135#$");
+ for(var x=0;x<3001;x++){
+	var hash = bcrypt.hashSync("PAsha135#$");
+ //console.log(hash); 
+	 var z=0;
+	if(y===hash){console.log(true,hash,'This is true');break; }
+	else{console.log(false,hash); } 
+	 
+};
  
-});
-
-mongoose.connect('mongodb://localhost/mombajee');//where mombajee is database to target!!
-    var Todo = mongoose.model('posts', TodoSchema);
-    var todo=new Todo(
-	{
-		
-    "content" : "blah blah blah",
-    "date" :Date(),
-    "author" : "Gorgon",
-    "description" : "Why are some nurses are unpaid for months?",
-    "name" : "Mental nurses on dem last $20",
-    "img" : "public/images/stock images/nathalie/13743619_1597412587225962_1157348179_n.jpg"
-		
-		}
-	);
-	todo.save(function(err){
-	if(err){console.log(err);}
-	else{console.log(todo);}	
-	});
+ console.log('done!!',z);

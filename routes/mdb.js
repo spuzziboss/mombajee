@@ -1,3 +1,4 @@
+
 var express = require('express');
 var mdb = express.Router();
 var bodyParser= require('body-parser');
@@ -228,7 +229,7 @@ mdb.post('/api/comments',function(req,res){
 						post.comments.push({ comment:comment,date:date,author:author });
 						post.save(function () {
 													 
-												console.log(post,'tried to save');
+						//try slice on array to 30 then save!!!						console.log(post,'tried to save');
 												
 												res.redirect('/'+id); 
 												
@@ -320,3 +321,4 @@ mdb.post('/api/search',function(req,res){
 	
 	});
 module.exports = mdb;
+

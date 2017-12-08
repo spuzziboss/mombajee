@@ -13,10 +13,10 @@ var Quote=Models.QSchema;
 router.get('/', function(req, res) {
 
  
-
+//console.log(req.session);
 
 var objreq={pause:false};
- 
+ /*
  if(req.session.site_views){
       req.session.site_views++;
      console.log("You visited this site " + req.session.site_views + " times");
@@ -26,7 +26,7 @@ var objreq={pause:false};
       console.log("Welcome to this site for the first time!");
 	  	 req.session.username='Nihilus';
    }
-
+*/
 Quote.find().count().exec(function(err,count) {
 	var rand=Math.ceil((Math.random())*count)-1;
 	//console.log(rand);
@@ -55,7 +55,7 @@ quote = JSON.parse(JSON.stringify(quote));
 
 router.get('/contact', function(req, res) {
 
-  //console.log(req.query.email);
+  console.log(typeof(req.query.email));
  if(req.query.email==='1'){
    
  res.render('contact.pug', {
@@ -122,7 +122,7 @@ var pid = req.params.mongoId;
 //pid=pid.toObjectId();
 //var objreq={'_id':pid};
 
-console.log(req.session.site_views);
+//console.log(req.session.site_views);
 
 
 
@@ -132,7 +132,7 @@ console.log(req.session.site_views);
 	
 	Todo.findOne({'_id':pid},'date author  name  content pause type comments').exec(function(err,todos) {
 	
-	console.log(todos);
+	//console.log(todos);
 	
 	if(err){	console.log(err);	 res.render('error.pug' );}
 	
