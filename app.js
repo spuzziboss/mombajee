@@ -87,12 +87,17 @@ passport.use(new LocalStrategy(
 passport.use(new FacebookStrategy({
     clientID: 1743834388973681,
     clientSecret:'ba64850dff9cc099a736cca35960e611',
-    callbackURL: '/login'
+    callbackURL: '/auth/facebook/callback'
   },
   function(accessToken, refreshToken, profile, done) {
     UserFB.findOne({ facebookId: profile.id }, function (err, user) {
 	    if (err) { console.log(err);return done(err); }
-      if (!user) { console.log('no user!');return done(null, false); }//create user!!!!!!!!!!!
+      if (!user) {
+		   console.log('no user!');return done(null, false);
+		   
+		   
+		   
+		  }//create user!!!!!!!!!!!
 	  
       return done(err, user);
     });

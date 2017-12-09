@@ -35,15 +35,22 @@ users.post('/login',
     res.redirect('/blogger');
   });
   
-  
-  users.post('/loginFB',
+ users.post('/loginFB', passport.authenticate('facebook'), function(req, res){
+});
+
+users.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+  res.redirect('/');
+});
+
+/*  users.post('/loginFB',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
     console.log(req.user);
     res.redirect('/');
   });
   
-  
+  */
 users.get('/logout', function(req, res){
   
   
